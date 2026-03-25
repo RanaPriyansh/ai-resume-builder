@@ -1,28 +1,27 @@
 # AI Resume Builder
 
-AI-powered ai resume builder for iOS.
+Generated from App Factory as a local-first MVP.
 
-## Features
-- AI generation using Claude API
-- Stripe subscription payments ($9/month)
-- Freemium model: 1 free generation
-- PDF export (coming soon)
+## Current backend path
 
-## Setup
-1. Copy `.env.example` to `.env` and fill in your API keys
-2. Run: `pip install -r requirements.txt`
-3. Run: `uvicorn main:app --reload`
-4. Open http://localhost:8000/docs for API docs
+The backend is designed to run locally without paid services.
 
-## Deployment
-Deploy to Vercel, Railway, or Heroku. Set all environment variables.
+### Local setup
+1. `cd backend`
+2. `cp .env.example .env`
+3. Leave `AI_PROVIDER=local`
+4. Leave `DATABASE_PROVIDER=local`
+5. `pip install -r requirements.txt`
+6. `uvicorn main:app --reload`
 
-## App Store
-iOS app template: iOS/ResumeBuilder/
-Configure bundle ID: com.thielon.resumebuilder
-Set RevenueCat product: AI Resume Builder
+### Example request
+`curl -X POST http://localhost:8000/api/v1/generate -H 'Content-Type: application/json' -d '{"app_type":"resume_builder","input":"Create a resume draft for a junior data analyst applying to a fintech role","email":"demo@example.com"}'`
 
-## Revenue
-- Freemium: 1 free generation
-- Pro: $9/month
-- Target: 100+ subscribers in first month = $900/mo
+## Notes
+- Anthropic is optional, not required
+- Stripe and Supabase are optional scaffolding
+- iOS template work still needs follow-up before production use
+
+## App metadata
+- Bundle ID: com.appfactory.resumebuilder
+- Suggested price if you later commercialize it: $9/month
